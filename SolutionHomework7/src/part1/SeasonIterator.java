@@ -1,3 +1,5 @@
+package part1;
+
 import java.util.NoSuchElementException;
 
 public class SeasonIterator implements EpisodeIterator {
