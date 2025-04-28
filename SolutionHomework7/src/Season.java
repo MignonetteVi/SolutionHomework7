@@ -1,5 +1,5 @@
-import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Season implements Iterable<Episode> {
@@ -12,7 +12,7 @@ public class Season implements Iterable<Episode> {
     List<Episode> getEpisodes() {
         return episodes;
     }
-    
+
     @Override
     public Iterator<Episode> iterator() {
         return new SeasonIterator(this);

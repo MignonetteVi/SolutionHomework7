@@ -1,17 +1,21 @@
-import java.util.Iterator;
+import java.util.NoSuchElementException;
 
-public class SeasonIterator implements Iterator<Episode> {
-    public SeasonIterator(Season episodes) {
+public class SeasonIterator implements EpisodeIterator {
+    private final Season season;
+    private int index = 0;
 
+    public SeasonIterator(Season season) {
+        this.season = season;
     }
 
     @Override
     public boolean hasNext() {
-        return false;
+        return index < season.getEpisodes().size();
     }
 
     @Override
     public Episode next() {
-        return null;
+        if (!hasNext()) throw new NoSuchElementException();
+        return season.getEpisodes().get(index++);
     }
 }

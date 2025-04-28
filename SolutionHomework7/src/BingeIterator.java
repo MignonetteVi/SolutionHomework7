@@ -1,9 +1,10 @@
 import java.util.List;
+import java.util.NoSuchElementException;
 
 public class BingeIterator implements EpisodeIterator {
     private final List<Season> seasons;
-    private int seasonIndex = 0;
-    private SeasonIterator current;
+    private int seasonIdx = 0;
+    private EpisodeIterator current;
 
     public BingeIterator(List<Season> seasons) {
         this.seasons = seasons;
@@ -13,17 +14,18 @@ public class BingeIterator implements EpisodeIterator {
     @Override
     public boolean hasNext() {
         while (current != null && !current.hasNext()) {
-            seasonIndex++;
-            if (seasonIndex >= seasons.size()) {
+            seasonIdx++;
+            if (seasonIdx >= seasons.size()) {
                 return false;
             }
-            current = new SeasonIterator(seasons.get(seasonIndex));
+            current = new SeasonIterator(seasons.get(seasonIdx));
         }
         return current != null && current.hasNext();
     }
 
     @Override
     public Episode next() {
+        if (!hasNext()) throw new NoSuchElementException();
         return current.next();
     }
 }

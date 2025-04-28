@@ -1,3 +1,5 @@
+import java.util.NoSuchElementException;
+
 public class ReverseSeasonIterator implements EpisodeIterator {
     private final Season season;
     private int index;
@@ -14,6 +16,7 @@ public class ReverseSeasonIterator implements EpisodeIterator {
 
     @Override
     public Episode next() {
+        if (!hasNext()) throw new NoSuchElementException();
         return season.getEpisodes().get(index--);
     }
 }

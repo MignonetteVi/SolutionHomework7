@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Random;
 
 public class ShuffleSeasonIterator implements EpisodeIterator {
@@ -9,7 +10,7 @@ public class ShuffleSeasonIterator implements EpisodeIterator {
 
     public ShuffleSeasonIterator(Season season) {
         this.shuffled = new ArrayList<>(season.getEpisodes());
-        Collections.shuffle(this.shuffled, new Random(42)); // fixed seed for repeatability
+        Collections.shuffle(shuffled, new Random(42));
     }
 
     @Override
@@ -19,6 +20,7 @@ public class ShuffleSeasonIterator implements EpisodeIterator {
 
     @Override
     public Episode next() {
+        if (!hasNext()) throw new NoSuchElementException();
         return shuffled.get(index++);
     }
 }
