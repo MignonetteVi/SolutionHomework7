@@ -1,3 +1,5 @@
+package part2;
+
 public class Helicopter extends Aircraft {
     public Helicopter(String id, int fuelLevel, TowerMediator tower) {
         super(id, fuelLevel, tower);

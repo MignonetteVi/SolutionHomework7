@@ -1,3 +1,5 @@
+package part2;
+
 public class PassengerPlane extends Aircraft {
     public PassengerPlane(String id, int fuelLevel, TowerMediator tower) {
         super(id, fuelLevel, tower);

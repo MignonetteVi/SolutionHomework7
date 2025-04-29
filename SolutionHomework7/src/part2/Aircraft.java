@@ -1,3 +1,5 @@
+package part2;
+
 public abstract class Aircraft {
     protected final String id;
     protected int fuelLevel;
