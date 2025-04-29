@@ -18,13 +18,13 @@ public abstract class Aircraft {
         return fuelLevel;
     }
 
-
     public abstract void receive(String msg);
 
     public void send(String msg) {
+        tower.broadcast(msg, this);
     }
 
     public boolean requestRunway() {
-        return true;
+        return tower.requestRunway(this);
     }
 }
